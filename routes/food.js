@@ -3,7 +3,7 @@ const express = require("express");
 
 const router = express.Router();
 
-router.post("/orders", async(req,res)=>{
+router.post("/api/order", async(req,res)=>{
     console.log(req.body);
     const { name,address,food,price,number_of_plates, } = req.body;
     const newOrder = new Order({
@@ -17,7 +17,7 @@ router.post("/orders", async(req,res)=>{
     res.status(201).json (newOrder);
 });
 
-router.get("/view_orders",
+router.get("/api/orders",
 async (req,res)=>{
     
     const get_all_orders = await Order.find();
@@ -30,7 +30,7 @@ async (req,res)=>{
       });
 });
 
-router.put("/orders/:id", async (req,res)=>{
+router.put("/api/orders/:id", async (req,res)=>{
     const id = req.params.id
     const{name,
         address,
@@ -43,7 +43,7 @@ router.put("/orders/:id", async (req,res)=>{
 return res.status(200).json(update_orders);
 });
 
-router.delete("/order/:id", async(req,res)=>{
+router.delete("/api/order/:id", async(req,res)=>{
     const id= req.params.id
     const delete_order = await Order.findByIdAndDelete({_id:id},);
     return res.status(200).json(delete_order)
