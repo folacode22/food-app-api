@@ -1,16 +1,17 @@
+//food delivery app Schema
 const mongoose = require ("mongoose");
 const orderSchema = new mongoose.Schema({
     name:{
         type: String,
         required: true,
-        minlenght: 3,
-        maxlenght:25 
+        Minlenght: 3,
+        Maxlenght:25 
     },
     address:{
         type: String,
         required: true,
-        minlenght:10,
-        maxlenght:30
+        Minlenght:10,
+        Maxlenght:30
     },
     food:{
         type: String,
@@ -28,5 +29,7 @@ const orderSchema = new mongoose.Schema({
 },
 {timestamps:true},);
 
+
 const orderModel = mongoose.model("order", orderSchema);
+//exporting models to routes
 module.exports = orderModel;
