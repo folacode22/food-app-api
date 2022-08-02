@@ -1,24 +1,29 @@
 //npm packages
-const dotenv = require('dotenv');
-dotenv.config();
-const express = require('express');
-const mongoose = require('mongoose');
-const testRouter = require('./routes/food');
+// require dotenv
+require('dotenv').config();
 
+//import packages
+const express = require('express');
+
+//import database connect
+const connectDB = require('./database/db');
+
+//import routes handlers
+const testRouter = require('./routes/food.routes');
+
+//invoke our db connection
+connectDB();
+
+//create an instance of express
 const app = express();
 
-//port to use
+//declare your port 
 const port = process.env.PORT || 1500;
 
-//middleware
+//express middleware
 
 app.use(express.json());
-app.use(testRouter);
-
-//database connected to
-mongoose.connect(process.env.MONGODB_URL, ()=>{
-    console.log('connected to database');
-});
+app.use('/api',testRouter);
 
 //404 error
 app.use("*", (req, res) => {
@@ -29,6 +34,6 @@ app.use("*", (req, res) => {
 
 //port listen to
 app.listen(port, ()=>{
-    console.log(`server is running on port ${port}`);
+    console.log(`app is running on port ${port}`);
     console.log(process.env.NODE_ENV);
 });

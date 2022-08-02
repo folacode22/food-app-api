@@ -1,7 +1,10 @@
-//router
+//import our models
 const Order = require("../models/food");
+
+//imported our packages
 const express = require("express");
 
+//created our router mapper
 const router = express.Router();
 
 //API Endpoint to make new order
@@ -26,6 +29,7 @@ router.post("/api/order", async(req,res)=>{
      return res.status(500).json({ message: "server error" });
     }
 });
+
 //API Endpoint to view request order   
 router.get("/api/orders",
 async (req,res)=>{
