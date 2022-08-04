@@ -24,7 +24,7 @@ npm i -D
 >End point to update  orders.
 - http://localhost/1500/api/orders/:id
 
->End point to approve delete order orders
+>End point to  delete order 
 - http://localhost/1500/api/order/:id
 
 #### Testing api
