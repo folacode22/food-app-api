@@ -9,7 +9,7 @@ const router = express.Router();
 
 //API Endpoint to make new order
 
-router.post("/api/order", async(req,res)=>{
+router.post("/order", async(req,res)=>{
     try {
          console.log(req.body);
     const { name,address,food,price,number_of_plates, } = req.body;
@@ -31,9 +31,10 @@ router.post("/api/order", async(req,res)=>{
 });
 
 //API Endpoint to view request order   
-router.get("/api/orders",
+router.get("/orders",
 async (req,res)=>{
     try {
+        
         const get_all_orders = await Order.find();
         return res
       .status(200)
@@ -48,7 +49,7 @@ async (req,res)=>{
 });
 
 //API Endpoint to updating of order
-router.put("/api/orders/:id", async (req,res)=>{
+router.put("/orders/:id", async (req,res)=>{
     try {
          const id = req.params.id
     const{name,
@@ -68,7 +69,7 @@ return res.status(200).json(update_orders);
 });
 
 //API Endpoint to approve delete order
-router.delete("/api/order/:id", async(req,res)=>{
+router.delete("/order/:id", async(req,res)=>{
     try {
         const id= req.params.id
     const delete_order = await Order.findByIdAndDelete({_id:id},);
