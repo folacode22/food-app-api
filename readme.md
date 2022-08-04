@@ -1,5 +1,5 @@
 # food-delivery-app-API
-### Packaage
+### Package
 
 #### npm install (package)
 npm i
