@@ -25,6 +25,11 @@ const port = process.env.PORT || 1500;
 app.use(express.json());
 app.use('/api',testRouter);
 
+app.get('/',(req, res)=>{
+  res.send('Home page');
+console.log(error);
+});
+
 //404 error
 app.use("*", (req, res) => {
   return res
